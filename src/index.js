@@ -18,15 +18,20 @@ const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 // <Add num1="10" num2="20"></Add>
 // Addition is 30
 
-function Greet(props) {
-  console.log(props.prop3);
+// v can be (X, Y, Z)
+// <SlotMachine v1="X" v2="Y" v3="Z" ></SlotMachine> => You Lose
+// <SlotMachine v1="X" v2="X" v3="Z" ></SlotMachine> => You Lose
+// <SlotMachine v1="Y" v2="Y" v3="Y" ></SlotMachine> => You Win
 
-  return (
-    <div>
-      <p>Hello XYZ</p>
-    </div>
-  );
+// If all 3 values are same, You Win!
+// If any one value differes You Lose!
+
+function Add(props) {
+  const num1 = props.num1;
+  const num2 = props.num2;
+
+  return <div>Addition is {num1 + num2}</div>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById("abhishek"));
-root.render(<Greet prop1="Himanshu" prop2="ABC" prop3="DEF"></Greet>);
+root.render(<Add num1={100} num2={200} />);
