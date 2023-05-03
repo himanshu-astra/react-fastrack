@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 
@@ -26,18 +27,17 @@ const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 // If all 3 values are same, You Win!
 // If any one value differes You Lose!
 
+// Inline
+// Internal
+// Extrernal
+
+const divStyle = { backgroundColor: "black" };
+
 const SlotMachine = (props) => {
   const { v1, v2, v3 } = props;
 
-  // let result;
-  // if (v1 === v2 && v2 === v3) {
-  //   result = "You Win";
-  // } else {
-  //   result = "You Lose";
-  // }
-
   return (
-    <div>
+    <div style={divStyle} className="myClass">
       <span>{v1}</span>
       <span>{v2}</span>
       <span>{v3}</span>
