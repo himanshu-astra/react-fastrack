@@ -38,19 +38,36 @@ const YoutubeTag = ({ text }) => {
 };
 
 const AllYoutubeTags = ({ ytTags }) => {
-  const finalData = [];
-
-  for (let i = 0; i < ytTags.length; i++) {
-    // i = 1
-    // ytTags[1] = "Comedy"
-    // <YoutubeTag text="Comedy" />
-
-    const UI = <YoutubeTag text={ytTags[i]} />;
-    finalData.push(UI);
-  }
-
-  return <div>{finalData}</div>;
+  // const finalData = ytTags.map((tag) => <YoutubeTag text={tag} />);
+  return (
+    <div>
+      {ytTags.map((tag) => (
+        <YoutubeTag text={tag} />
+      ))}
+    </div>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("abhishek"));
 root.render(<AllYoutubeTags ytTags={youtubeData} randomData="123" />);
+
+const heroes = [
+  {
+    firstName: "Bruce",
+    lastName: "Wayne",
+    alias: "Batman",
+  },
+  {
+    firstName: "Clark",
+    lastName: "Kent",
+    alias: "Super-man",
+  },
+  {
+    firstName: "Peter",
+    lastName: "Parker",
+    alias: "Spiderman",
+  },
+];
+
+// Hello My real name is <FullName> Red color
+// My superhero name is <alias> blue color
