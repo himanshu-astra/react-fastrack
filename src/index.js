@@ -26,12 +26,25 @@ const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 // If all 3 values are same, You Win!
 // If any one value differes You Lose!
 
-function Add(props) {
-  const num1 = props.num1;
-  const num2 = props.num2;
+const SlotMachine = (props) => {
+  const { v1, v2, v3 } = props;
 
-  return <div>Addition is {num1 + num2}</div>;
-}
+  let result;
+  if (v1 === v2 && v2 === v3) {
+    result = "You Win";
+  } else {
+    result = "You Lose";
+  }
+
+  return (
+    <div>
+      <span>{v1}</span>
+      <span>{v2}</span>
+      <span>{v3}</span>
+      <p>{result}</p>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("abhishek"));
-root.render(<Add num1={100} num2={200} />);
+root.render(<SlotMachine v1={"X"} v2="X" v3="X" />);
