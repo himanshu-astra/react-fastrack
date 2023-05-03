@@ -29,22 +29,22 @@ const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 const SlotMachine = (props) => {
   const { v1, v2, v3 } = props;
 
-  let result;
-  if (v1 === v2 && v2 === v3) {
-    result = "You Win";
-  } else {
-    result = "You Lose";
-  }
+  // let result;
+  // if (v1 === v2 && v2 === v3) {
+  //   result = "You Win";
+  // } else {
+  //   result = "You Lose";
+  // }
 
   return (
     <div>
       <span>{v1}</span>
       <span>{v2}</span>
       <span>{v3}</span>
-      <p>{result}</p>
+      <p>{v1 === v2 && v2 === v3 ? "You Win" : "You Lose"}</p>
     </div>
   );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("abhishek"));
-root.render(<SlotMachine v1={"X"} v2="X" v3="X" />);
+root.render(<SlotMachine v1={"X"} v2="X" v3="Y" />);
