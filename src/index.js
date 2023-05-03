@@ -31,20 +31,26 @@ const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 // Internal
 // Extrernal
 
-const divStyle = { backgroundColor: "black" };
+const youtubeData = ["All", "Comedy", "Action", "Thriller"]; // fetch all tags
 
-const SlotMachine = (props) => {
-  const { v1, v2, v3 } = props;
+const YoutubeTag = ({ text }) => {
+  return <span className="youtube-tag">{text}</span>;
+};
 
-  return (
-    <div style={divStyle} className="myClass">
-      <span>{v1}</span>
-      <span>{v2}</span>
-      <span>{v3}</span>
-      <p>{v1 === v2 && v2 === v3 ? "You Win" : "You Lose"}</p>
-    </div>
-  );
+const AllYoutubeTags = ({ ytTags }) => {
+  const finalData = [];
+
+  for (let i = 0; i < ytTags.length; i++) {
+    // i = 1
+    // ytTags[1] = "Comedy"
+    // <YoutubeTag text="Comedy" />
+
+    const UI = <YoutubeTag text={ytTags[i]} />;
+    finalData.push(UI);
+  }
+
+  return <div>{finalData}</div>;
 };
 
 const root = ReactDOM.createRoot(document.getElementById("abhishek"));
-root.render(<SlotMachine v1={"X"} v2="X" v3="Y" />);
+root.render(<AllYoutubeTags ytTags={youtubeData} randomData="123" />);
