@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
-const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
+import { v4 as uuidv4 } from "uuid";
 
 // Input of functions: props (Javascript Object)
 // Output: HTML(JSX)
@@ -33,12 +32,15 @@ const youtubeTags = ["All", "Dubbing", "Comedy", "Music", "One More"];
 
 const youtubeData = ["All", "Comedy", "Action", "Thriller"]; // fetch all tags
 
+// { text }
 const YoutubeTag = ({ text }) => {
   return <span className="youtube-tag">{text}</span>;
 };
 
 const AllYoutubeTags = ({ ytTags }) => {
-  // const finalData = ytTags.map((tag) => <YoutubeTag text={tag} />);
+  // const finalData = ytTags.map((tag) => <YoutubeTag text={tag} color={myColor} width={myWidth} />);
+  // {color: myColor, width: myWidth, text:tag}
+
   return (
     <div>
       {ytTags.map((tag) => (
@@ -47,9 +49,6 @@ const AllYoutubeTags = ({ ytTags }) => {
     </div>
   );
 };
-
-const root = ReactDOM.createRoot(document.getElementById("abhishek"));
-root.render(<AllYoutubeTags ytTags={youtubeData} randomData="123" />);
 
 const heroes = [
   {
@@ -69,5 +68,49 @@ const heroes = [
   },
 ];
 
+// this in function keyword, refers to object calling the function
+// this in arrow function, refers to the "lexical" this
+
+<html>
+  <body>
+    <div></div>
+    <div>
+      <p>
+        <span></span>
+      </p>
+    </div>
+    <div></div>
+  </body>
+</html>;
+
+// Painting UI to screen is a slow process.
+// Solution is Virtual DOM
+
+// Virtual DOM: In memory(RAM) representation of the DOM
+// Re-conciliation: How to paint the browser screen with differences found out in diffing process
+// Diffing: Compare oldvirtual dom and new virtual dom(with updates)
+
 // Hello My real name is <FullName> Red color
 // My superhero name is <alias> blue color
+
+const Counter = () => {
+  let [count, setCount] = useState(0); // useState => gives me 2 things
+  // current state of component
+  // and a function to update said state
+
+  const handleClick = () => {
+    console.log("Button was clicked");
+    setCount(count + 1);
+    // count = count + 1;
+  };
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("abhishek"));
+root.render(<Counter />);
