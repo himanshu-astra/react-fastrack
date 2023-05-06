@@ -14,3 +14,14 @@ const pokemon = [
   { id: 94, name: "Gengar", type: "poison", base_experience: 225 },
   { id: 133, name: "Eevee", type: "normal", base_experience: 65 },
 ];
+
+const Pokemon = (props) => {
+  const { id } = props;
+  const url = `${baseUrl}${id}.png`;
+
+  console.log(url);
+
+  return <img src={url} />;
+};
+
+export default Pokemon;

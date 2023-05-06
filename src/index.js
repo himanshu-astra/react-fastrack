@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { v4 as uuidv4 } from "uuid";
+import Pokemon from "./Pokemon";
 
 // Input of functions: props (Javascript Object)
 // Output: HTML(JSX)
@@ -112,5 +113,20 @@ const Counter = () => {
   );
 };
 
+const currentPokemom = {
+  id: 133,
+  name: "Eevee",
+  type: "normal",
+  base_experience: 65,
+};
+
 const root = ReactDOM.createRoot(document.getElementById("abhishek"));
-root.render(<Counter />);
+// root.render(
+//   <Pokemon
+//     id={currentPokemom.id}
+//     name={currentPokemom.name}
+//     type={currentPokemom.type}
+//     base_experience={currentPokemom.base_experience}
+//   />
+// );
+root.render(<Pokemon {...currentPokemom} />);
