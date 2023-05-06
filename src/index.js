@@ -115,6 +115,11 @@ const Counter = () => {
   );
 };
 
+// HOMEWORK
+
+// 2 input box with add, subtract, multiply, divide
+// Calculator like windows (1, 2, 3 ... ) are buttons
+
 const currentPokemom = {
   id: 133,
   name: "Eevee",
