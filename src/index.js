@@ -96,35 +96,21 @@ const heroes = [
 
 // import {useState} from 'react';
 const Counter = () => {
-  const [counterData, setCounterData] = useState({
-    score: 0,
-    count: 0,
-  });
+  const [userNum, setUserNum] = useState(0);
 
-  const handleDecrementClick = () => {
-    const newCounterData = {
-      score: counterData.score - 1,
-      count: counterData.count + 1,
-    };
-    setCounterData(newCounterData);
+  const handleChange = (e) => {
+    setUserNum(parseInt(e.target.value));
   };
 
-  const handleIncrementClick = () => {
-    const newCounterData = {
-      score: counterData.score + 2,
-      count: counterData.count + 1,
-    };
-    setCounterData(newCounterData);
+  const handleAdd10 = () => {
+    setUserNum(userNum + 10);
   };
-
-  const { score, count } = counterData;
 
   return (
     <div>
-      <p>Score: {score}</p>
-      <p>Number of clicks: {count}</p>
-      <button onClick={handleIncrementClick}>Increment</button>
-      <button onClick={handleDecrementClick}>Decrement</button>
+      <p>Addition is {userNum}</p>
+      <input type="number" onChange={handleChange} value={userNum} />
+      <button onClick={handleAdd10}>Add 10</button>
     </div>
   );
 };
