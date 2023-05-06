@@ -94,21 +94,37 @@ const heroes = [
 // Hello My real name is <FullName> Red color
 // My superhero name is <alias> blue color
 
+// import {useState} from 'react';
 const Counter = () => {
-  let [count, setCount] = useState(0); // useState => gives me 2 things
-  // current state of component
-  // and a function to update said state
+  const [counterData, setCounterData] = useState({
+    score: 0,
+    count: 0,
+  });
 
-  const handleClick = () => {
-    console.log("Button was clicked");
-    setCount(count + 1);
-    // count = count + 1;
+  const handleDecrementClick = () => {
+    const newCounterData = {
+      score: counterData.score - 1,
+      count: counterData.count + 1,
+    };
+    setCounterData(newCounterData);
   };
+
+  const handleIncrementClick = () => {
+    const newCounterData = {
+      score: counterData.score + 2,
+      count: counterData.count + 1,
+    };
+    setCounterData(newCounterData);
+  };
+
+  const { score, count } = counterData;
 
   return (
     <div>
-      <p>{count}</p>
-      <button onClick={handleClick}>Increment</button>
+      <p>Score: {score}</p>
+      <p>Number of clicks: {count}</p>
+      <button onClick={handleIncrementClick}>Increment</button>
+      <button onClick={handleDecrementClick}>Decrement</button>
     </div>
   );
 };
@@ -129,4 +145,4 @@ const root = ReactDOM.createRoot(document.getElementById("abhishek"));
 //     base_experience={currentPokemom.base_experience}
 //   />
 // );
-root.render(<Pokemon {...currentPokemom} />);
+root.render(<Counter />);
