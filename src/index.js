@@ -103,7 +103,8 @@ const Counter = () => {
   };
 
   const handleAdd10 = () => {
-    setUserNum(userNum + 10);
+    const newRes = userNum + 10;
+    setUserNum(newRes);
   };
 
   return (
@@ -119,6 +120,98 @@ const Counter = () => {
 
 // 2 input box with add, subtract, multiply, divide
 // Calculator like windows (1, 2, 3 ... ) are buttons
+
+// If you are doing the same thing again and again
+// Some compute is very slow
+
+const Calculator = () => {
+  let [result, setResult] = useState("");
+
+  // Use name atribute to get the name of target, and use a common function by giving each button a name
+  // which corresponds to thier value (example: name="100" for <button>100</button>)
+  const handleClick = (e) => {
+    setResult(result.concat(e.target.name));
+  };
+
+  const clear = () => {
+    setResult("");
+  };
+
+  // hello, last character remove
+  // hello, first character remove
+  // [11, -12, 34, 74, 95] => elements ka sum
+  // [11, -12, 34, 74, 95] => even elements ka sum
+  // [11, -12, 34, 74, 95] => if number odd, add the number, if number is even subtract the number
+  // 11 - 12 -34 -74 + 95
+
+  const backspace = () => {
+    const backspacedResult = "hello";
+    let localRes = "";
+    for (let i = 0; i <= backspacedResult.length - 2; i++) {
+      localRes += backspacedResult[i];
+    }
+    setResult(localRes);
+  };
+
+  // Solution 1: Attach one unique function to each button
+  const click7 = () => {
+    setResult(result.concat(7));
+  };
+
+  const click8 = () => {
+    setResult(result.concat(8));
+  };
+
+  const click9 = () => {
+    setResult(result.concat(9));
+  };
+
+  return (
+    <div className="container">
+      <form>
+        <input type="text" value={result} />
+      </form>
+      <div className="keypad">
+        <button className="highlight" onClick={clear} id="clear">
+          Clear
+        </button>
+        <button className="highlight" onClick={backspace} id="backspace">
+          {"<-"}
+        </button>
+        <button className="highlight" name="/" onClick={handleClick}>
+          &divide;
+        </button>
+        <div>
+          <button onClick={click7}>7</button>
+          <button onClick={click8}>8</button>
+          <button onClick={click9}>9</button>
+        </div>
+        <div>
+          <button name="4" onClick={handleClick}>
+            4
+          </button>
+          <button name="5" onClick={handleClick}>
+            5
+          </button>
+          <button name="6" onClick={handleClick}>
+            6
+          </button>
+        </div>
+        <div>
+          <button name="1" onClick={handleClick}>
+            1
+          </button>
+          <button name="2" onClick={handleClick}>
+            2
+          </button>
+          <button name="3" onClick={handleClick}>
+            3
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const currentPokemom = {
   id: 133,
@@ -136,4 +229,4 @@ const root = ReactDOM.createRoot(document.getElementById("abhishek"));
 //     base_experience={currentPokemom.base_experience}
 //   />
 // );
-root.render(<Counter />);
+root.render(<Calculator />);
