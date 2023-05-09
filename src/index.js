@@ -124,6 +124,11 @@ const Counter = () => {
 // If you are doing the same thing again and again
 // Some compute is very slow
 
+// const arr = [11, -12, 34, 74, 95];
+// for (let i = 0; i < arr.length; i++) {
+//   console.log(arr[i]);
+// }
+
 const Calculator = () => {
   let [result, setResult] = useState("");
 
@@ -137,6 +142,12 @@ const Calculator = () => {
     setResult("");
   };
 
+  const calculateResult = () => {
+    // eslint-disable-next-line no-eval
+    const finalRes = eval(result);
+    console.log(finalRes);
+  };
+
   // hello, last character remove
   // hello, first character remove
   // [11, -12, 34, 74, 95] => elements ka sum
@@ -145,7 +156,7 @@ const Calculator = () => {
   // 11 - 12 -34 -74 + 95
 
   const backspace = () => {
-    const backspacedResult = "hello";
+    const backspacedResult = result;
     let localRes = "";
     for (let i = 0; i <= backspacedResult.length - 2; i++) {
       localRes += backspacedResult[i];
@@ -178,8 +189,20 @@ const Calculator = () => {
         <button className="highlight" onClick={backspace} id="backspace">
           {"<-"}
         </button>
-        <button className="highlight" name="/" onClick={handleClick}>
+        <button className="divide" name="/" onClick={handleClick}>
           &divide;
+        </button>
+        <button className="divide" name="+" onClick={handleClick}>
+          +
+        </button>
+        <button className="divide" name="-" onClick={handleClick}>
+          -
+        </button>
+        <button className="divide" name="*" onClick={handleClick}>
+          *
+        </button>
+        <button className="divide" name="=" onClick={calculateResult}>
+          =
         </button>
         <div>
           <button onClick={click7}>7</button>
