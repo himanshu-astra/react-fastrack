@@ -118,7 +118,8 @@ const Counter = () => {
 
 // HOMEWORK
 
-// 2 input box with add, subtract, multiply, divide
+// 2 input box with add, subtract, multiply, divide buttons
+
 // Calculator like windows (1, 2, 3 ... ) are buttons
 
 // If you are doing the same thing again and again
@@ -129,8 +130,15 @@ const Counter = () => {
 //   console.log(arr[i]);
 // }
 
-const Calculator = () => {
+// Effect => Synchronise UI with data
+function Calculator() {
+  // Save a value between re-renders (function run/calls)
   let [result, setResult] = useState("");
+
+  let count = 0;
+  count++;
+
+  console.log("Function ran", count);
 
   // Use name atribute to get the name of target, and use a common function by giving each button a name
   // which corresponds to thier value (example: name="100" for <button>100</button>)
@@ -234,7 +242,7 @@ const Calculator = () => {
       </div>
     </div>
   );
-};
+}
 
 const currentPokemom = {
   id: 133,
@@ -252,4 +260,17 @@ const root = ReactDOM.createRoot(document.getElementById("abhishek"));
 //     base_experience={currentPokemom.base_experience}
 //   />
 // );
-root.render(<Calculator />);
+
+const EffectDemo = () => {
+  const res = fetch("https://jsonplaceholder.typicode.com/todos", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+
+  return <p>Loading..</p>;
+};
+
+root.render(<EffectDemo />);

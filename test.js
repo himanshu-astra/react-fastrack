@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 const pokemon = [
   { id: 4, name: "Charmander", type: "fire", base_experience: 62 },
   { id: 7, name: "Squirtle", type: "water", base_experience: 63 },
@@ -11,3 +13,10 @@ const pokemon = [
 
 // Total Experince
 // type === Normal, sum of base_experinece
+// 2 input box with add, subtract, multiply, divide buttons
+
+fetch("https://jsonplaceholder.typicode.com/todos", {
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
