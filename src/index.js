@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { v4 as uuidv4 } from "uuid";
 import Pokemon from "./Pokemon";
+import SelectPokemon from "./SelectPokemon";
 
 // Input of functions: props (Javascript Object)
 // Output: HTML(JSX)
@@ -273,4 +274,4 @@ const EffectDemo = () => {
   return <p>Loading..</p>;
 };
 
-root.render(<EffectDemo />);
+root.render(<SelectPokemon />);
