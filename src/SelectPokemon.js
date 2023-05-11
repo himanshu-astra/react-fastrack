@@ -32,6 +32,7 @@ function PokemonCard(props) {
 }
 
 
+// Add all functionality in the dropdown
 function SelectPokemon() {
     const [ type, setType ]= useState(arrayOfTypes[0]); // [data, function to update data]
 
