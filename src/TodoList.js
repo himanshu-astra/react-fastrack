@@ -67,6 +67,7 @@ function TodoList() {
 
 export default TodoList;
 
+// Homework
 // List all todos
 // Create a dropdown with following states. All, completed, incomplete.
 // Update the todos on server, based on User state: https://jsonplaceholder.typicode.com/guide/
