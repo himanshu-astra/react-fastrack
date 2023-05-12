@@ -17,7 +17,7 @@ for(let  i = 0; i < pokemon.length; i++) {
   const pokemonType = pokemon[i].type;
   pokemonTypes.add(pokemonType);
 }
-const arrayOfTypes = [...pokemonTypes]; // Spread
+const arrayOfTypes = ["All", ...pokemonTypes]; // Spread
 
 // Select Dropdown to show all type (DONE)
 // Show List of all pokemon by default (DONE)
@@ -33,16 +33,15 @@ function PokemonCard(props) {
 
 
 // Add all functionality in the dropdown
-function SelectPokemon() {
-    const [ type, setType ]= useState(arrayOfTypes[0]); // [data, function to update data]
+function SelectPokemon(props) {
+    const [ type, setType ]= useState(props.initialType || arrayOfTypes[0]); // [data, function to update data]
 
     const filteredList = [];
     for(let i = 0; i < pokemon.length; i++) {
-        if(pokemon[i].type === type) {
+        if(pokemon[i].type === type || type === "All") {
             filteredList.push(pokemon[i]);
         }
     }
-
 
     return <div>
         <select name="type" id="type" style={{width: 200, padding: 10}} value={type} 

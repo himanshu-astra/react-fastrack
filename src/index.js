@@ -35,8 +35,8 @@ import SelectPokemon from "./SelectPokemon";
 const youtubeData = ["All", "Comedy", "Action", "Thriller"]; // fetch all tags
 
 // { text }
-const YoutubeTag = ({ text }) => {
-  return <span className="youtube-tag">{text}</span>;
+const YoutubeTag = (props) => {
+  return <span className="youtube-tag">{props.text}</span>;
 };
 
 const AllYoutubeTags = ({ ytTags }) => {
@@ -274,4 +274,4 @@ const EffectDemo = () => {
   return <p>Loading..</p>;
 };
 
-root.render(<SelectPokemon />);
+root.render(<SelectPokemon initialType={"flying"} />);
