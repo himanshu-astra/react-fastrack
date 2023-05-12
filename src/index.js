@@ -4,6 +4,7 @@ import "./index.css";
 import { v4 as uuidv4 } from "uuid";
 import Pokemon from "./Pokemon";
 import SelectPokemon from "./SelectPokemon";
+import TodoList from "./TodoList";
 
 // Input of functions: props (Javascript Object)
 // Output: HTML(JSX)
@@ -274,4 +275,4 @@ const EffectDemo = () => {
   return <p>Loading..</p>;
 };
 
-root.render(<SelectPokemon initialType={"flying"} />);
+root.render(<TodoList />);
