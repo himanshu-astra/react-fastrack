@@ -1,15 +1,37 @@
 import { useEffect, useState } from "react";
 import "./TodoList.css";
 
-async function fetchData() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-  const jsonRes = await res.json();
-  console.log(jsonRes);
-  return jsonRes;
-}
-
 const Todo = (props) => {
   const [isCompleted, setIsCompleted] = useState(props.completed);
+
+  console.log(props);
+
+  async function updateTodoStatus() {
+    const paylad = {
+      id: props.id,
+      completed: !isCompleted,
+    };
+
+    console.log("Before isCompleted: ", isCompleted); // false
+    setIsCompleted(!isCompleted);
+    // SetState does immediately update state,
+    // It waits for multiple updates and batches them together to finally update the state
+    console.log("After isCompleted: ", isCompleted); // false
+    try {
+      const res = await fetch(
+        `https://jsonplaceholder.typicode.com/todos/${props.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(paylad),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+    } catch (err) {
+      console.error("Cannot update todo: ", err);
+    }
+  }
 
   return (
     <div
@@ -20,7 +42,7 @@ const Todo = (props) => {
         paddng: 4,
       }}
       className="hover"
-      onClick={() => setIsCompleted(!isCompleted)}
+      onClick={updateTodoStatus}
     >
       {isCompleted ? (
         <strike>
@@ -57,10 +79,17 @@ function TodoList() {
 
   // fetchData()
 
+  const fetchedData = {
+    userId: 1,
+    id: 1,
+    title: "delectus aut autem",
+    completed: false,
+  };
+
   return (
     <div>
       <p>{loading ? "Loding..." : "Loaded data from server"}</p>
-      <Todo title={"React is not a nice library"} completed={false} />
+      <Todo {...fetchedData} />
     </div>
   );
 }
