@@ -1,37 +1,36 @@
 import { useEffect, useState } from "react";
 import "./TodoList.css";
 
+// setState
+// effect
+// useContext, Provider
+
 const Todo = (props) => {
   const [isCompleted, setIsCompleted] = useState(props.completed);
 
-  console.log(props);
+  // useEffect(functionToRunSideEffect, whenToRun)
+  // Whenever any of the values in whenToRun array changes, then functionToRunSideEffect is run.
 
-  async function updateTodoStatus() {
-    const paylad = {
-      id: props.id,
-      completed: !isCompleted,
-    };
-
-    console.log("Before isCompleted: ", isCompleted); // false
-    setIsCompleted(!isCompleted);
-    // SetState does immediately update state,
-    // It waits for multiple updates and batches them together to finally update the state
-    console.log("After isCompleted: ", isCompleted); // false
-    try {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/todos/${props.id}`,
-        {
+  useEffect(() => {
+    // This function runs when isCompleted, props.id  changes
+    async function updateTodoStatus() {
+      try {
+        await fetch(`https://jsonplaceholder.typicode.com/todos/${props.id}`, {
           method: "PUT",
-          body: JSON.stringify(paylad),
+          body: JSON.stringify({
+            id: props.id,
+            isCompleted: isCompleted,
+          }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
-        }
-      );
-    } catch (err) {
-      console.error("Cannot update todo: ", err);
+        });
+      } catch (err) {
+        console.error("Cannot update todo: ", err);
+      }
     }
-  }
+    updateTodoStatus();
+  }, [isCompleted, props.id]);
 
   return (
     <div
@@ -42,7 +41,7 @@ const Todo = (props) => {
         paddng: 4,
       }}
       className="hover"
-      onClick={updateTodoStatus}
+      onClick={() => setIsCompleted(!isCompleted)}
     >
       {isCompleted ? (
         <strike>
