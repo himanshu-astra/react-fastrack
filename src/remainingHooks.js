@@ -49,3 +49,11 @@ const Main = (props) => {
 };
 
 export default Main;
+
+// HW
+// Revise
+// Complete your todo
+// E-Commerce:
+// Display a cart
+//     Add to cart https://fakestoreapi.com/
+//     Remove from cart
