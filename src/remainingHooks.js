@@ -9,9 +9,12 @@ import { createContext, useContext } from "react";
 // Consumer: Will ask the data from provider.
 
 // Prop Drilling
+
+// Step 1.
 const Theme = createContext(null);
 
 const C = () => {
+  // Step 3: Consuming the provided data
   const contextData = useContext(Theme);
   return <p>The theme is {contextData}</p>;
 };
@@ -37,6 +40,7 @@ const A = () => {
 const Main = (props) => {
   return (
     <>
+      {/* Step 2: Creating a provide */}
       <Theme.Provider value={props.usefulData}>
         <A />
       </Theme.Provider>
