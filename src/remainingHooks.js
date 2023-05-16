@@ -1,31 +1,47 @@
+import { createContext, useContext } from "react";
+
 // useState: React tracks some data for us. It provides a mechanism to update the data.
 // useEffect: When some data changes, we need to run a function. Sync data with server/localStore.
 // useContext:
 // useRef:
 
-const C = (props) => {
-  return <p>The theme is {props.usefulData}</p>;
+// Provider(Distributor): Will provide/distribute value to every component that asks for data.
+// Consumer: Will ask the data from provider.
+
+// Prop Drilling
+const Theme = createContext(null);
+
+const C = () => {
+  const contextData = useContext(Theme);
+  return <p>The theme is {contextData}</p>;
 };
-const B = (props) => {
+const B = () => {
   return (
     <div>
       <p>This is B Component</p>
-      <C usefulData={props.theme} />
+      <C />
     </div>
   );
 };
 
-const A = (props) => {
+const A = () => {
   return (
     <div>
       <p>This is A component</p>
-      <B theme={props.usefulData} />
+      <B />
     </div>
   );
 };
 
+// Setting up provider
 const Main = (props) => {
-  return <A usefulData={props.usefulData} />;
+  return (
+    <>
+      <Theme.Provider value={props.usefulData}>
+        <A />
+      </Theme.Provider>
+    </>
+  );
 };
 
 export default Main;
