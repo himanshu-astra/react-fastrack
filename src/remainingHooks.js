@@ -13,24 +13,32 @@ import { createContext, useContext, useState } from "react";
 // Step 1.
 const Theme = createContext(null);
 
-const C = () => {
+const C = (props) => {
   // Step 3: Consuming the provided data
   const contextData = useContext(Theme);
-  console.log(contextData);
 
   return (
     <div>
       <p>The theme is {contextData.theme}</p>
+      <p>The count is {props.count}</p>
       <button onClick={contextData.setTheme}>Update Theme</button>
+      <button onClick={() => props.setCount(props.count + 1)}>
+        Update Count
+      </button>
     </div>
   );
 };
 const B = () => {
+  const [count, setCount] = useState(0);
+
   return (
-    <div>
-      <p>This is B Component</p>
-      <C />
-    </div>
+    <>
+      <div style={{ display: "flex" }}>
+        <p>This is B Component: {count}</p>
+        <button onClick={() => setCount(count - 1)}>Decrement</button>
+      </div>
+      <C count={count} setCount={setCount} />
+    </>
   );
 };
 
@@ -79,3 +87,12 @@ export default Main;
 //  A                     |
 //    B                   |
 //      C                 cosume => (theme, setTheme)
+
+// Pass data from Parent component to child component
+// Solution 1: use props, pass data with help of props. (Always use this)
+// Solution 2: Use context. (Use this only when, props drilling occurs)
+
+// Pass data from child to parent
+// Lift state up from child component to parent component.
+// In our case, we passed count, setCount from B component(Parent) to Child component C.
+// This works because, who-ever has setter function can update state.
