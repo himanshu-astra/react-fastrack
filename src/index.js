@@ -278,4 +278,4 @@ const EffectDemo = () => {
 };
 
 const usefulData = "darkTheme"; // theme
-root.render(<Form />);
+root.render(<Main />);

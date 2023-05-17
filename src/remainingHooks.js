@@ -16,7 +16,14 @@ const Theme = createContext(null);
 const C = () => {
   // Step 3: Consuming the provided data
   const contextData = useContext(Theme);
-  return <p>The theme is {contextData}</p>;
+  console.log(contextData);
+
+  return (
+    <div>
+      <p>The theme is {contextData.theme}</p>
+      <button onClick={contextData.setTheme}>Update Theme</button>
+    </div>
+  );
 };
 const B = () => {
   return (
@@ -39,10 +46,19 @@ const A = () => {
 // Setting up provider
 const Main = () => {
   const [theme, setTheme] = useState("dark");
+
+  const handleThemeChange = () => {
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  };
+
   return (
     <>
       {/* Step 2: Creating a provide */}
-      <Theme.Provider value={{ theme: props.usefulData, updateTheme }}>
+      <Theme.Provider value={{ theme: theme, setTheme: handleThemeChange }}>
         <A />
       </Theme.Provider>
     </>
@@ -58,3 +74,8 @@ export default Main;
 // Display a cart
 //     Add to cart https://fakestoreapi.com/
 //     Remove from cart
+
+// Main             (theme, setTheme)
+//  A                     |
+//    B                   |
+//      C                 cosume => (theme, setTheme)
