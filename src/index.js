@@ -6,6 +6,7 @@ import Pokemon from "./Pokemon";
 import SelectPokemon from "./SelectPokemon";
 import TodoList from "./TodoList";
 import Main from "./remainingHooks";
+import Form from "./Ref";
 
 // Input of functions: props (Javascript Object)
 // Output: HTML(JSX)
@@ -277,4 +278,4 @@ const EffectDemo = () => {
 };
 
 const usefulData = "darkTheme"; // theme
-root.render(<Main usefulData={usefulData} />);
+root.render(<Form />);
