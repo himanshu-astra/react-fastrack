@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 // useState: React tracks some data for us. It provides a mechanism to update the data.
 // useEffect: When some data changes, we need to run a function. Sync data with server/localStore.
@@ -37,11 +37,12 @@ const A = () => {
 };
 
 // Setting up provider
-const Main = (props) => {
+const Main = () => {
+  const [theme, setTheme] = useState("dark");
   return (
     <>
       {/* Step 2: Creating a provide */}
-      <Theme.Provider value={props.usefulData}>
+      <Theme.Provider value={{ theme: props.usefulData, updateTheme }}>
         <A />
       </Theme.Provider>
     </>
