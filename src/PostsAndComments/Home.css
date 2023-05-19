@@ -3,6 +3,11 @@
     padding: 8px;
     width: 33%;
     border-radius: 12px;
+    margin-right: 12px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .post-title {
@@ -29,4 +34,9 @@
     overflow: hidden;
     max-height: 3.6em;
     line-height: 1.8em;
+}
+
+.posts {
+    display: flex;
+    flex-direction: row;
 }
