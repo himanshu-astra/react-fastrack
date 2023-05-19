@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 const staticData = [
@@ -26,17 +28,33 @@ const Post = (props) => {
         <div className="border" />
       </div>
       <pre className="post-body">{props.body}</pre>
-      <a href="/post">Read More...</a>
+      <Link to={`/post/${props.id}`}>Read More...</Link>
     </div>
   );
 };
 
 const Home = () => {
+  const [postData, setPostData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const jsonRes = await res.json();
+      setPostData(jsonRes);
+    };
+
+    fetchData();
+  }, []);
+
   let posts = [];
 
-  for (let i = 0; i < staticData.length; i++) {
+  for (let i = 0; i < postData.length; i++) {
     const postUI = (
-      <Post title={staticData[i].title} body={staticData[i].body} />
+      <Post
+        title={postData[i].title}
+        body={postData[i].body}
+        id={postData[i].id}
+      />
     );
     posts.push(postUI);
   }
