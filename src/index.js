@@ -9,6 +9,7 @@ import Main from "./remainingHooks";
 import Form from "./Ref";
 import CustomRouter from "./CustomRouter";
 import ReactRouter from "./ReactRouter";
+import App from "./PostsAndComments";
 
 // Input of functions: props (Javascript Object)
 // Output: HTML(JSX)
@@ -280,4 +281,4 @@ const EffectDemo = () => {
 };
 
 const usefulData = "darkTheme"; // theme
-root.render(<ReactRouter />);
+root.render(<App />);

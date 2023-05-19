@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ const Home = () => {
     <div>
       <h1>I am home page</h1>
       <button onClick={goToAbout}>Go To About Page</button>
-      <a href="/about" alt="Navigate to about page">
+      <Link to="/about" alt="Navigate to about page">
         Go TO About Page
-      </a>
+      </Link>
     </div>
   );
 };
