@@ -1,11 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const goToAbout = () => {
-    navigate("/dog");
+    navigate("/dog", {
+      state: {
+        userId: 1,
+      },
+    });
   };
 
   return (

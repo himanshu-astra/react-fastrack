@@ -28,7 +28,7 @@ const Post = (props) => {
         <div className="border" />
       </div>
       <pre className="post-body">{props.body}</pre>
-      <Link to={`/post/${props.id}`}>Read More...</Link>
+      <Link to={`/post/${props.userId}/${props.id}`}>Read More...</Link>
     </div>
   );
 };
@@ -54,10 +54,13 @@ const Home = () => {
         title={postData[i].title}
         body={postData[i].body}
         id={postData[i].id}
+        userId={postData[i].userId}
       />
     );
     posts.push(postUI);
   }
+
+  console.log(postData);
 
   return <div className="posts">{posts}</div>;
 };
